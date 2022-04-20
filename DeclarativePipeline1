@@ -1,47 +1,36 @@
-pipeline
+pipeline 
 {
     agent any
     stages
     {
-        stage('ContinuousDownload')
+        stage('continuousdownload Customer5')
         {
             steps
             {
-                git 'https://github.com/intelliqittrainings/maven.git'
+                git 'https://github.com/krishnain/mavenab.git'
             }
         }
-        stage('ContinuousBuild')
+        stage('continuousbuild')
         {
             steps
             {
-              sh label: '', script: 'mvn package'
+                sh 'mvn package'
             }
-                
         }
         stage('ContinuousDeployment')
         {
             steps
             {
-                sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/DeclarativePipeline/webapp/target/webapp.war ubuntu@172.31.31.15:/var/lib/tomcat8/webapps/testwebapp.war'
+                sh 'scp /home/ubuntu/.jenkins/workspace/Declarative_pipeline@2/webapp/target/webapp.war ubuntu@172.31.81.97:/var/lib/tomcat9/webapps/sa.war'
             }
-            
         }
-        stage('ContinuousTesting')
+        stage('continuoustesting')
         {
             steps
             {
-                git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
-                sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/DeclarativePipeline/testing.jar'
+               git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
+               sh 'java -jar /home/ubuntu/.jenkins/workspace/Declarative_pipeline@2/testing.jar'
             }
         }
-        stage('ContinuousDelivery')
-        {
-           steps
-           {
-               input message: 'Waiting for Approval from the DM!', submitter: 'naresh'
-               sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/DeclarativePipeline/webapp/target/webapp.war ubuntu@172.31.26.41:/var/lib/tomcat8/webapps/prodwebapp.war'
-           }
-        }
-    }
-    
 }
+    
