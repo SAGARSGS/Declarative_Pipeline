@@ -10,5 +10,6 @@ pipeline
                 git 'https://github.com/krishnain/mavenab.git'
             }
         }
+     }
 }
     
