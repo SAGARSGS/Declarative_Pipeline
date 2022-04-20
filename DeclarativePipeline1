@@ -24,5 +24,6 @@ pipeline
                 sh 'scp /home/ubuntu/.jenkins/workspace/Declarative_pipeline@2/webapp/target/webapp.war ubuntu@172.31.81.97:/var/lib/tomcat9/webapps/sa.war'
             }
         }
+     }
 }
     
